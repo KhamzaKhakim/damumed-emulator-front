@@ -20,13 +20,7 @@ export type Post = {
     hPostName: string;
 }
 
-
-
-
-
-
-
-export async function getAllPosts() {
+export async function getAllPosts(): Promise<Post[]> {
     const response = await fetch("http://localhost:8080/db/post");
   
     if (!response.ok) {
@@ -36,7 +30,8 @@ export async function getAllPosts() {
     return response.json();
   }
 
-  export async function deletePost(iin: number) {
+  export async function deletePost(iin: string) {
+    console.log(iin)
     const response = await fetch(`http://localhost:8080/db/post/${iin}`, {
       method: "DELETE",
     });

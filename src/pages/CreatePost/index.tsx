@@ -1,17 +1,38 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
+import { Post } from "../../api/posts";
 import classes from "./styles.module.css"
 import { updatePost } from "../../api/posts";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 
 export const CreatePost = () => {
 
     const navigate = useNavigate();
 
-    const [postForm, setPostForm] = useState({})
+    const [postForm, setPostForm] = useState<Post>({
+        orgHealthCareID: "",
+        funcStructureID: "",
+        funcStructureName: "",
+        postID: "",
+        postMasterDataID: 0,
+        postFIO: "",
+        postShortFIO: "",
+        postIIN: "",
+        postBirthDate: "",
+        personSexName: "",
+        stavka: 0,
+        personalTypeID: 0,
+        personalTypeName: "",
+        categoryPostID: 0,
+        categoryPostName: "",
+        priznPostID: 0,
+        priznPostName: "",
+        hPostID: 0,
+        hPostName: "",
+    })
     
-    function handleChange(e){
+    function handleChange(e: ChangeEvent<HTMLInputElement>){
       setPostForm(prev => {
         return {
           ...prev,
@@ -35,8 +56,12 @@ export const CreatePost = () => {
         },
       })
 
-      function handleCreate(e){
+      function handleCreate(e: FormEvent<HTMLFormElement>){
         e.preventDefault()
+        if(postForm.postIIN == ""){
+            alert("postIIN should not be empty, since it is the primary key")
+            return
+        }
         createPostMutation.mutate(postForm)
       }
       return (
@@ -46,7 +71,7 @@ export const CreatePost = () => {
           <div className={classes.container}> 
             <div></div>
             <div className={classes.button}>
-            <button onClick={handleCreate}>Create</button>
+            <input type="submit" value="Create"/>
             <button onClick={navigateToPosts}>Cancel</button>
             </div>   
             <div className={classes.inputs}>

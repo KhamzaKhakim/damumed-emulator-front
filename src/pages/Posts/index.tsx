@@ -29,8 +29,8 @@ export default function PostsList() {
         <button onClick={navigateToCreate}>Create new post</button>
       </div>
       <div className={classes.colFlex}>
-          {postsQuery.data.map(post  => (
-            <PostItem key={post.postIIN} post={post}/>
+          {postsQuery.data?.map(item  => (
+            <PostItem key={item.postIIN} post={item}/>
           ))}
       </div>
       </>

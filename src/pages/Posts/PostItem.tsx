@@ -1,16 +1,23 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import { deletePost, updatePost } from "../../api/posts";
 import { useMutation, useQueryClient } from "react-query";
+import { Post } from "../../api/posts";
 import classes from "./styles.module.css"
-import { useState } from "react";
 
 
-export const PostItem = ({post}) => {
+
+type propValue = {
+  post: Post;
+}
+
+
+export const PostItem = ({post}: propValue) => {
 
 
     const [updatePage, setUpdatePage] = useState(false)
     const [postForm, setPostForm] = useState(post)
     
-    function handleChange(e){
+    function handleChange(e: ChangeEvent<HTMLInputElement>){
       setPostForm(prev => {
         return {
           ...prev,
@@ -28,8 +35,7 @@ export const PostItem = ({post}) => {
       },
     })
   
-    function handleDelete(e) {
-      e.preventDefault()
+    function handleDelete() {
       deletePostMutation.mutate(post.postIIN)
     }
 
@@ -46,7 +52,7 @@ export const PostItem = ({post}) => {
         setUpdatePage(prev => !prev)
       }
 
-      function handleUpdate(e){
+      function handleUpdate(e: FormEvent<HTMLFormElement>){
         e.preventDefault()
         updatePostMutation.mutate(postForm)
       }
@@ -59,7 +65,7 @@ export const PostItem = ({post}) => {
           <div className={classes.container}> 
             <div></div>
             <div className={classes.button}>
-            <button onClick={handleUpdate}>Save</button>
+            <input type="submit" value="Save"/>
             <button onClick={handleUpdatePage}>Cancel</button>
             </div>   
             <div className={classes.inputs}>
