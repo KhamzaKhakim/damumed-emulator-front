@@ -1,9 +1,14 @@
 import { PostItem } from "./PostItem";
 import classes from "./styles.module.css"
 import { getAllPosts } from "../../api/posts";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 
+
 export default function PostsList() {
+
+    const navigate = useNavigate();
+
     const postsQuery = useQuery({
       queryKey: ["posts"],
       queryFn: getAllPosts,
@@ -13,12 +18,21 @@ export default function PostsList() {
     if (postsQuery.status === "error") {
       return <h1>{JSON.stringify(postsQuery.error)}</h1>
     }
+
+    function navigateToCreate(){
+      navigate("/create-post")
+    }
   
     return (
-      <div className={classes.card}>
-          {postsQuery.data.map(post => (
+      <>
+      <div className={classes.colFlex}>
+        <button onClick={navigateToCreate}>Create new post</button>
+      </div>
+      <div className={classes.colFlex}>
+          {postsQuery.data.map(post  => (
             <PostItem key={post.postIIN} post={post}/>
           ))}
       </div>
+      </>
     )
   }
