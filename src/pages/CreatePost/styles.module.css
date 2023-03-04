@@ -5,10 +5,12 @@
 }
 
 .container {
+    font-weight: bolder;
+    color: rgb(74, 74, 74);
     width: 800px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #fcf6db;
+    border: 1px rgb(210, 210, 210) solid;
     border-radius: 10px;
     margin: 10px;
 }
@@ -17,16 +19,13 @@
     padding-left: 10px;
 }
 
-.fields p{
-    margin-top: 0;
-    margin-bottom: 1em;
+.fields p, input{
+    margin:5px;
 }
 
-.inputs {
-    padding-left: 10px;
-}
-.inputs input{
-    margin-bottom: 1em;
+.value {
+    font-weight:lighter;
+    color: rgb(108, 99, 100);
 }
 
 .button {
@@ -35,3 +34,8 @@
     display: inline-block;
 }
 
+.buttonIcon {
+    width: 30px;
+    border: none;
+    background: none;
+}

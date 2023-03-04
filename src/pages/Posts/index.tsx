@@ -1,13 +1,15 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import { PostItem } from "./PostItem";
 import classes from "./styles.module.css"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { getAllPosts } from "../../api/posts";
-import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
+
 
 
 export default function PostsList() {
 
-    const navigate = useNavigate();
 
     const postsQuery = useQuery({
       queryKey: ["posts"],
@@ -18,15 +20,11 @@ export default function PostsList() {
     if (postsQuery.status === "error") {
       return <h1>{JSON.stringify(postsQuery.error)}</h1>
     }
-
-    function navigateToCreate(){
-      navigate("/create-post")
-    }
   
     return (
       <>
       <div className={classes.colFlex}>
-        <button onClick={navigateToCreate}>Create new post</button>
+        <Link to="/create-post" className={classes.createLink}>Create new post <FontAwesomeIcon icon={faCirclePlus} size="xl"/></Link>
       </div>
       <div className={classes.colFlex}>
           {postsQuery.data?.map(item  => (

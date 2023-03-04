@@ -31,7 +31,6 @@ export async function getAllPosts(): Promise<Post[]> {
   }
 
   export async function deletePost(iin: string) {
-    console.log(iin)
     const response = await fetch(`http://localhost:8080/db/post/${iin}`, {
       method: "DELETE",
     });

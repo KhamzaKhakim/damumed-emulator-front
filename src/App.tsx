@@ -9,7 +9,6 @@ function App() {
       <Routes>
         <Route path="/posts" element={<Posts/>} />
         <Route path="/create-post" element={<CreatePost/>} />
-
       </Routes>
     </>
   )

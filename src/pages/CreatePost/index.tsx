@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { faFloppyDisk, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useMutation, useQueryClient } from "react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Post } from "../../api/posts";
 import classes from "./styles.module.css"
 import { updatePost } from "../../api/posts";
@@ -58,10 +60,6 @@ export const CreatePost = () => {
 
       function handleCreate(e: FormEvent<HTMLFormElement>){
         e.preventDefault()
-        if(postForm.postIIN == ""){
-            alert("postIIN should not be empty, since it is the primary key")
-            return
-        }
         createPostMutation.mutate(postForm)
       }
       return (
@@ -71,10 +69,10 @@ export const CreatePost = () => {
           <div className={classes.container}> 
             <div></div>
             <div className={classes.button}>
-            <input type="submit" value="Create"/>
-            <button onClick={navigateToPosts}>Cancel</button>
+            <button type="submit" className={classes.buttonIcon} disabled={postForm.postIIN === ""}><FontAwesomeIcon icon={faFloppyDisk} size="xl"/></button>
+            <button onClick={navigateToPosts} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
             </div>   
-            <div className={classes.inputs}>
+            <div className={classes.fields}>
             <label>&quot;orgHealthCareID&quot; : </label>
             <input defaultValue={postForm.orgHealthCareID} type="text" name="orgHealthCareID" onChange={handleChange}/>
             <label>&quot;funcStructureID&quot; : </label>
@@ -120,7 +118,6 @@ export const CreatePost = () => {
         </div>
         </form>
         </div>
-        <div>{JSON.stringify(postForm)}</div>
         </>
       )
   };

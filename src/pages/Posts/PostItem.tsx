@@ -1,8 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { deletePost, updatePost } from "../../api/posts";
+import { faFilePen, faFloppyDisk, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useMutation, useQueryClient } from "react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Post } from "../../api/posts";
-import classes from "./styles.module.css"
+import classes from "./styles.module.css";
+
+
 
 
 
@@ -64,11 +68,11 @@ export const PostItem = ({post}: propValue) => {
         <form onSubmit={handleUpdate}>
           <div className={classes.container}> 
             <div></div>
-            <div className={classes.button}>
-            <input type="submit" value="Save"/>
-            <button onClick={handleUpdatePage}>Cancel</button>
+            <div className={classes.buttonContainer}>
+            <button type="submit" className={classes.buttonIcon} disabled={post === postForm}><FontAwesomeIcon icon={faFloppyDisk} size="xl"/></button>
+            <button onClick={handleUpdatePage} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
             </div>   
-            <div className={classes.inputs}>
+            <div className={classes.fields}>
             <label>&quot;orgHealthCareID&quot; : </label>
             <input defaultValue={postForm.orgHealthCareID} type="text" name="orgHealthCareID" onChange={handleChange}/>
             <label>&quot;funcStructureID&quot; : </label>
@@ -109,7 +113,6 @@ export const PostItem = ({post}: propValue) => {
             <input defaultValue={postForm.hPostID} type="number" name="hPostID" onChange={handleChange}/><br/>
             <label>&quot;hPostName&quot; : </label>
             <input defaultValue={postForm.hPostName} type="text" name="hPostName" onChange={handleChange}/><br/>
-
             </div>
         </div>
         </form>
@@ -121,32 +124,32 @@ export const PostItem = ({post}: propValue) => {
         <>
           <div className={classes.container}> 
             <div></div>
-            <div className={classes.button}>
-            <button onClick={handleUpdatePage}>Update</button>
-            <button onClick={handleDelete}>Delete</button>
+            <div className={classes.buttonContainer}>
+            <button onClick={handleUpdatePage}  className={classes.buttonIcon}><FontAwesomeIcon icon={faFilePen} size="xl"/></button>
+            <button onClick={handleDelete} className={classes.buttonIcon}><FontAwesomeIcon icon={faTrash} size="xl"/></button>
             </div>   
             <div className={classes.fields}>
-            <p>&quot;orgHealthCareID&quot; : &quot;{post.orgHealthCareID}&quot;</p>
-            <p>&quot;funcStructureID&quot;: &quot;{post.funcStructureID}&quot;</p>
-            <p>&quot;funcStructureName&quot; : &quot;{post.funcStructureName}&quot;</p>
-            <p>&quot;postID&quot; : &quot;{post.postID}&quot;</p>
-            <p>&quot;postMasterDataID&quot; : &quot;{post.postMasterDataID}&quot;</p>
-            <p>&quot;postFIO&quot; : &quot;{post.postFIO}&quot;</p>
-            <p>&quot;postShortFIO&quot; : &quot;{post.postShortFIO}&quot;</p>
-            <p>&quot;postIIN&quot; : &quot;{post.postIIN}&quot;</p>
-            <p>&quot;postBirthDate&quot; : &quot;{post.postBirthDate}&quot;</p>
-            <p>&quot;personSexName&quot; : &quot;{post.personSexName}&quot;</p>
+            <p>&quot;orgHealthCareID&quot; : <span className={classes.value}>&quot;{post.orgHealthCareID}&quot;</span></p>
+            <p>&quot;funcStructureID&quot;: <span className={classes.value}>&quot;{post.funcStructureID}&quot;</span></p>
+            <p>&quot;funcStructureName&quot; : <span className={classes.value}>&quot;{post.funcStructureName}&quot;</span></p>
+            <p>&quot;postID&quot; : <span className={classes.value}>&quot;{post.postID}&quot;</span></p>
+            <p>&quot;postMasterDataID&quot; : <span className={classes.value}>&quot;{post.postMasterDataID}&quot;</span></p>
+            <p>&quot;postFIO&quot; : <span className={classes.value}>&quot;{post.postFIO}&quot;</span></p>
+            <p>&quot;postShortFIO&quot; : <span className={classes.value}>&quot;{post.postShortFIO}&quot;</span></p>
+            <p>&quot;postIIN&quot; : <span className={classes.value}>&quot;{post.postIIN}&quot;</span></p>
+            <p>&quot;postBirthDate&quot; : <span className={classes.value}>&quot;{post.postBirthDate}&quot;</span></p>
+            <p>&quot;personSexName&quot; : <span className={classes.value}>&quot;{post.personSexName}&quot;</span></p>
             </div>
             <div className={classes.fields}>
-            <p>&quot;stavka&quot; : &quot;{post.stavka}&quot;</p>
-            <p>&quot;personalTypeID&quot; : &quot;{post.personalTypeID}&quot;</p>
-            <p>&quot;personalTypeName&quot; : &quot;{post.personalTypeName}&quot;</p>
-            <p>&quot;categoryPostID&quot; : &quot;{post.categoryPostID}&quot;</p>
-            <p>&quot;categoryPostName&quot; : &quot;{post.categoryPostName}&quot;</p>
-            <p>&quot;priznPostID&quot; : &quot;{post.priznPostID}&quot;</p>
-            <p>&quot;priznPostName&quot; : &quot;{post.priznPostName}&quot;</p>
-            <p>&quot;hPostID&quot; : &quot;{post.hPostID}&quot;</p>
-            <p>&quot;hPostName&quot; : &quot;{post.hPostName}&quot;</p>
+            <p>&quot;stavka&quot; : <span className={classes.value}>&quot;{post.stavka}&quot;</span></p>
+            <p>&quot;personalTypeID&quot; : <span className={classes.value}>&quot;{post.personalTypeID}&quot;</span></p>
+            <p>&quot;personalTypeName&quot; : <span className={classes.value}>&quot;{post.personalTypeName}&quot;</span></p>
+            <p>&quot;categoryPostID&quot; : <span className={classes.value}>&quot;{post.categoryPostID}&quot;</span></p>
+            <p>&quot;categoryPostName&quot; : <span className={classes.value}>&quot;{post.categoryPostName}&quot;</span></p>
+            <p>&quot;priznPostID&quot; : <span className={classes.value}>&quot;{post.priznPostID}&quot;</span></p>
+            <p>&quot;priznPostName&quot; : <span className={classes.value}>&quot;{post.priznPostName}&quot;</span></p>
+            <p>&quot;hPostID&quot; : <span className={classes.value}>&quot;{post.hPostID}&quot;</span></p>
+            <p>&quot;hPostName&quot; : <span className={classes.value}>&quot;{post.hPostName}&quot;</span></p>
             </div>
         </div>
         </>
