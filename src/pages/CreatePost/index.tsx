@@ -3,6 +3,7 @@ import { faFloppyDisk, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useMutation, useQueryClient } from "react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Post } from "../../api/posts";
+import UpdateField from "../../components/UpdateField";
 import classes from "./styles.module.css"
 import { updatePost } from "../../api/posts";
 import { useNavigate } from "react-router-dom";
@@ -35,6 +36,7 @@ export const CreatePost = () => {
     })
     
     function handleChange(e: ChangeEvent<HTMLInputElement>){
+      console.log(e.target.name)
       setPostForm(prev => {
         return {
           ...prev,
@@ -60,6 +62,8 @@ export const CreatePost = () => {
 
       function handleCreate(e: FormEvent<HTMLFormElement>){
         e.preventDefault()
+        console.log(postForm.postIIN)
+        console.log(postForm.personSexName)
         createPostMutation.mutate(postForm)
       }
       return (
@@ -72,84 +76,27 @@ export const CreatePost = () => {
             <button onClick={navigateToPosts} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
             </div>   
             <div className={classes.fields}>
-              <div className={classes.inputFields}>
-              <label>&quot;orgHealthCareID&quot; : </label>
-              <input defaultValue={postForm.orgHealthCareID} type="text" name="orgHealthCareID" onChange={handleChange}/>
+              <UpdateField name="orgHealthCareID" value={postForm.orgHealthCareID} handleChange={handleChange}/>
+              <UpdateField name="funcStructureID" value={postForm.funcStructureID} handleChange={handleChange}/>
+              <UpdateField name="funcStructureName" value={postForm.funcStructureName} handleChange={handleChange}/>
+              <UpdateField name="postID" value={postForm.postID} handleChange={handleChange}/>
+              <UpdateField name="postMasterDataID" value={postForm.postMasterDataID} type="number" handleChange={handleChange}/>
+              <UpdateField name="postFIO" value={postForm.postFIO} handleChange={handleChange}/>
+              <UpdateField name="postShortFIO" value={postForm.postShortFIO} handleChange={handleChange}/>
+              <UpdateField name="postIIN" value={postForm.postIIN} handleChange={handleChange}/>
+              <UpdateField name="postBirthDate" value={postForm.postBirthDate} type="datetime-local" handleChange={handleChange}/>
+              <UpdateField name="personSexName" value={postForm.personSexName} handleChange={handleChange}/>
               </div>
-              <div className={classes.inputFields}>
-              <label>&quot;funcStructureID&quot; : </label>
-              <input value={postForm.funcStructureID} type="text" name="funcStructureID" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;funcStructureName&quot; : </label>
-              <input defaultValue={postForm.funcStructureName} type="text" name="funcStructureName" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;postID&quot; : </label>
-              <input defaultValue={postForm.postID} type="text" name="postID" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;postMasterDataID&quot; : </label>
-              <input defaultValue={postForm.postMasterDataID} type="number" name="postMasterDataID" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;postFIO&quot; : </label>
-              <input defaultValue={postForm.postFIO} type="text" name="postFIO" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;postShortFIO&quot; : </label>
-              <input defaultValue={postForm.postShortFIO} type="text" name="postShortFIO" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;postIIN&quot; : </label>
-              <input value={postForm.postIIN} type="text" name="postIIN" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;postBirthDate&quot; : </label>
-              <input defaultValue={postForm.postBirthDate}type="datetime-local" name="postBirthDate" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;personSexName&quot; : </label>
-              <input value={postForm.personSexName} type="text" name="personSexName" onChange={handleChange}/>
-              </div>
-            </div>
             <div className={classes.fields}>
-              <div className={classes.inputFields}>
-              <label>&quot;stavka&quot; : </label>
-              <input className={classes.margin} defaultValue={postForm.stavka} type="number" name="stavka" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;personalTypeID&quot; : </label>
-              <input defaultValue={postForm.personalTypeID} type="number" name="personalTypeID" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;personalTypeName&quot; : </label>
-              <input defaultValue={postForm.personalTypeName} type="text" name="personalTypeName" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;categoryPostID&quot; : </label>
-              <input defaultValue={postForm.categoryPostID} type="number" name="categoryPostID" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;categoryPostName&quot; : </label>
-              <input defaultValue={postForm.categoryPostName} type="text" name="categoryPostName" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;priznPostID&quot; : </label>
-              <input defaultValue={postForm.priznPostID} type="number" name="priznPostID" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;priznPostName&quot; : </label>
-              <input defaultValue={postForm.priznPostName} type="text" name="priznPostName" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;hPostID&quot; : </label>
-              <input defaultValue={postForm.hPostID} type="number" name="hPostID" onChange={handleChange}/>
-              </div>
-              <div className={classes.inputFields}>
-              <label>&quot;hPostName&quot; : </label>
-              <input defaultValue={postForm.hPostName} type="text" name="hPostName" onChange={handleChange}/>
-              </div>
+              <UpdateField name="stavka" value={postForm.stavka} type="number" handleChange={handleChange}/>
+              <UpdateField name="personalTypeID" value={postForm.personalTypeID} type="number" handleChange={handleChange}/>
+              <UpdateField name="personalTypeName" value={postForm.personalTypeName} handleChange={handleChange}/>
+              <UpdateField name="categoryPostID" value={postForm.categoryPostID} type="number" handleChange={handleChange}/>
+              <UpdateField name="categoryPostName" value={postForm.categoryPostName} handleChange={handleChange}/>
+              <UpdateField name="priznPostID" value={postForm.priznPostID} type="number" handleChange={handleChange}/>
+              <UpdateField name="priznPostName" value={postForm.priznPostName} handleChange={handleChange}/>
+              <UpdateField name="hPostID" value={postForm.hPostID} type="number" handleChange={handleChange}/>
+              <UpdateField name="hPostName" value={postForm.hPostName} handleChange={handleChange}/>
             </div>
         </div>
         </form>
