@@ -4,9 +4,8 @@ import classes from "./styles.module.css";
 export default function Navbar() {
     return (
         <div className={classes.navbar}>
-            <Link to="/" className={classes.link}>Home</Link>
             <Link to="/posts" className={classes.link}>Posts</Link>
-            <Link to="/posts" className={classes.link}>Appointments</Link>
+            <Link to="/appointments" className={classes.link}>Appointments</Link>
             <Link to="/posts" className={classes.link}>Referrals</Link>
             <Link to="/posts" className={classes.link}>Referral Results</Link>
         </div>

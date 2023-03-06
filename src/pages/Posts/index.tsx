@@ -1,3 +1,4 @@
+import EmptyData from "../../components/EmptyData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { PostItem } from "./PostItem";
@@ -30,6 +31,7 @@ export default function PostsList() {
           {postsQuery.data?.map(item  => (
             <PostItem key={item.postIIN} post={item}/>
           ))}
+          {postsQuery.data?.length === 0 && <EmptyData />}
       </div>
       </>
     )
