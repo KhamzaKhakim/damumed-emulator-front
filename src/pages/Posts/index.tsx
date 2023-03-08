@@ -9,7 +9,7 @@ import { useQuery } from "react-query";
 
 
 
-export default function PostsList() {
+export default function Posts() {
 
 
     const postsQuery = useQuery({
