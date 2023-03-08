@@ -45,7 +45,6 @@ export async function getAllAppointments(): Promise<Appointment[]> {
 
 
   export async function updateAppointment(appointment: Appointment) {
-    console.log(appointment)
     const response = await fetch(`http://localhost:8080/db/appointment`, {
       method: "PUT",
       headers: {

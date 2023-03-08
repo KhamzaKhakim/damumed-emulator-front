@@ -63,8 +63,14 @@
 
 .inputFields input {
     position: absolute;
+    margin-top: 5px;
 }
     
+.booleanLabel{
+    display: inline-block !important;
+    margin: 0 20px  !important;
+}
+
 .inputFields label {
     display: inline-block;
     margin: 5px;

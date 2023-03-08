@@ -80,7 +80,7 @@ export const PostItem = ({post}: propValue) => {
               <UpdateField name="postMasterDataID" value={postForm.postMasterDataID} type="number" handleChange={handleChange}/>
               <UpdateField name="postFIO" value={postForm.postFIO} handleChange={handleChange}/>
               <UpdateField name="postShortFIO" value={postForm.postShortFIO} handleChange={handleChange}/>
-              <UpdateField name="postIIN" value={postForm.postIIN} handleChange={handleChange}/>
+              <UpdateField name="postIIN" readonly={true} value={postForm.postIIN} handleChange={handleChange}/>
               <UpdateField name="postBirthDate" value={postForm.postBirthDate} type="datetime-local" handleChange={handleChange}/>
               <UpdateField name="personSexName" value={postForm.personSexName} handleChange={handleChange}/>
               </div>

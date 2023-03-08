@@ -39,7 +39,6 @@ export const CreateAppointment = () => {
     })
     
     function handleChange(e: ChangeEvent<HTMLInputElement>){
-      console.log(e.target.name)
       setAppointmentForm(prev => {
         return {
           ...prev,
@@ -96,8 +95,8 @@ export const CreateAppointment = () => {
               <UpdateField name="problem" value={appointmentForm.problem} handleChange={handleChange}/>
               <UpdateField name="serviceName" value={appointmentForm.serviceName} handleChange={handleChange}/>  
               <UpdateField name="isPerformed" value={appointmentForm.isPerformed} type="boolean" handleChange={handleChange}/>  
-              <UpdateField name="isCancelReception" value={appointmentForm.isCancelReception} handleChange={handleChange}/>  
-              <UpdateField name="isRemotely" value={appointmentForm.isRemotely} handleChange={handleChange}/>  
+              <UpdateField name="isCancelReception" value={appointmentForm.isCancelReception} type="boolean" handleChange={handleChange}/>  
+              <UpdateField name="isRemotely" value={appointmentForm.isRemotely} type="boolean" handleChange={handleChange}/>  
               <UpdateField name="value" value={appointmentForm.value} type="number" handleChange={handleChange}/>  
               <UpdateField name="note" value={appointmentForm.note} handleChange={handleChange}/>  
             </div>

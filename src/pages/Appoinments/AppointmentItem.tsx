@@ -71,7 +71,7 @@ export const AppointmentItem = ({appointment}: propValue) => {
             <button onClick={handleUpdatePage} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
             </div>   
             <div className={classes.fields}>
-              <UpdateField name="provisionalAppointmentRecordID" value={appointmentForm.provisionalAppointmentRecordID} type="number" handleChange={handleChange}/>
+              <UpdateField name="provisionalAppointmentRecordID" readonly={true} value={appointmentForm.provisionalAppointmentRecordID} type="number" handleChange={handleChange}/>
               <UpdateField name="gridScheduleRecordID" value={appointmentForm.gridScheduleRecordID} type="number" handleChange={handleChange}/>
               <UpdateField name="personIIN" value={appointmentForm.personIIN} handleChange={handleChange}/>
               <UpdateField name="personFullName" value={appointmentForm.personFullName} handleChange={handleChange}/>
@@ -90,10 +90,9 @@ export const AppointmentItem = ({appointment}: propValue) => {
               <UpdateField name="assistanceMethod" value={appointmentForm.assistanceMethod} handleChange={handleChange}/>
               <UpdateField name="problem" value={appointmentForm.problem} handleChange={handleChange}/>
               <UpdateField name="serviceName" value={appointmentForm.serviceName} handleChange={handleChange}/>  
-              <UpdateField name="isPerformed" value={appointmentForm.isPerformed} handleChange={handleChange}/>  
-              <UpdateField name="isCancelReception" value={appointmentForm.isCancelReception} handleChange={handleChange}/>  
-              <UpdateField name="isRemotely" value={appointmentForm.isRemotely} handleChange={handleChange}/>  
-              <UpdateField name="isRemotely" value={appointmentForm.isRemotely} handleChange={handleChange}/>  
+              <UpdateField name="isPerformed" value={appointmentForm.isPerformed} type="boolean" handleChange={handleChange}/>  
+              <UpdateField name="isCancelReception" value={appointmentForm.isCancelReception} type="boolean" handleChange={handleChange}/>  
+              <UpdateField name="isRemotely" value={appointmentForm.isRemotely} type="boolean" handleChange={handleChange}/>
               <UpdateField name="value" value={appointmentForm.value} type="number" handleChange={handleChange}/>  
               <UpdateField name="note" value={appointmentForm.note} handleChange={handleChange}/>  
             </div>
@@ -129,13 +128,15 @@ export const AppointmentItem = ({appointment}: propValue) => {
             <p>&quot;servicePublicCode&quot; : <span className={classes.value}>&quot;{appointment.servicePublicCode}&quot;</span></p>
             <p>&quot;assistanceMethod&quot; : <span className={classes.value}>&quot;{appointment.assistanceMethod}&quot;</span></p>
             <p>&quot;problem&quot; : <span className={classes.value}>&quot;{appointment.problem}&quot;</span></p>
-            <p>&quot;isPerformed&quot; : <span className={classes.value}>&quot;{appointment.isPerformed}&quot;</span></p>
-            <p>&quot;isCancelReception&quot; : <span className={classes.value}>&quot;{appointment.isCancelReception}&quot;</span></p>
-            <p>&quot;isRemotely&quot; : <span className={classes.value}>&quot;{appointment.isRemotely}&quot;</span></p>
+            <p>&quot;isPerformed&quot; : <span className={classes.value}>&quot;{JSON.stringify(appointment.isPerformed)}&quot;</span></p>
+            <p>&quot;isCancelReception&quot; : <span className={classes.value}>&quot;{JSON.stringify(appointment.isCancelReception)}&quot;</span></p>
+            <p>&quot;isRemotely&quot; : <span className={classes.value}>&quot;{JSON.stringify(appointment.isRemotely)}&quot;</span></p>
             <p>&quot;value&quot; : <span className={classes.value}>&quot;{appointment.value}&quot;</span></p>
             {/* <p>&quot;questions&quot; : <span className={classes.value}>&quot;{appointment.questions}&quot;</span></p> */}
             <p>&quot;note&quot; : <span className={classes.value}>&quot;{appointment.note}&quot;</span></p>
             </div>
+        </div>
+        <div>
         </div>
         </>
       );

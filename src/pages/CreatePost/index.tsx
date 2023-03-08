@@ -36,7 +36,6 @@ export const CreatePost = () => {
     })
     
     function handleChange(e: ChangeEvent<HTMLInputElement>){
-      console.log(e.target.name)
       setPostForm(prev => {
         return {
           ...prev,
@@ -62,8 +61,6 @@ export const CreatePost = () => {
 
       function handleCreate(e: FormEvent<HTMLFormElement>){
         e.preventDefault()
-        console.log(postForm.postIIN)
-        console.log(postForm.personSexName)
         createPostMutation.mutate(postForm)
       }
       return (
