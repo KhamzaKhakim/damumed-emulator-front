@@ -2,15 +2,22 @@ import { AppointmentItem } from "./AppointmentItem";
 import EmptyData from "../../components/EmptyData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Pagination from "../../components/Pagination";
 import classes from "./styles.module.css"
 import { faFileImport } from "@fortawesome/free-solid-svg-icons";
 import { getAllAppointments } from "../../api/appointments";
 import { useQuery } from "react-query";
+import { useState } from "react";
 
 
 
 export default function Appointments() {
 
+  const [currentPage, setCurrentPage] = useState(1);
+    const postsPerPage = 2;  
+
+    const lastAppointmentIndex = currentPage * postsPerPage;
+    const firstAppointmentIndex = lastAppointmentIndex - postsPerPage;
 
     const appointmentsQuery = useQuery({
       queryKey: ["appointments"],
@@ -21,18 +28,26 @@ export default function Appointments() {
     if (appointmentsQuery.status === "error") {
       return <h1>{JSON.stringify(appointmentsQuery.error)}</h1>
     }
-  
+
+    const currentAppointments = appointmentsQuery.data?.slice(firstAppointmentIndex, lastAppointmentIndex);
+
     return (
       <>
       <div className={classes.colFlex}>
         <Link to="/create-appointment" className={classes.createLink}>ADD NEW APPOINTMENT<FontAwesomeIcon icon={faFileImport} size="xl"/></Link>
       </div>
       <div className={classes.colFlex}>
-          {appointmentsQuery.data?.map(item  => (
+          {currentAppointments?.map(item  => (
             <AppointmentItem key={item.provisionalAppointmentRecordID} appointment={item}/>
           ))}
           {appointmentsQuery.data?.length === 0 && <EmptyData />}
       </div>
+      <Pagination
+                totalPosts={appointmentsQuery.data?.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            />
       </>
     )
   }
