@@ -27,7 +27,7 @@ export default function UpdateField({name, value, type = "text", readonly = fals
     return (
         <div className={classes.inputFields}>
               <label>&quot;{name}&quot; : </label>
-              <input defaultValue={value} type={type} name={name} onChange={handleChange} readOnly={readonly}/>
+              <input defaultValue={value} type={type} name={name} onChange={handleChange} multiple readOnly={readonly}/>
         </div>
               
     )

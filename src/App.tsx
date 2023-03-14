@@ -3,6 +3,7 @@ import Appointments from "./pages/Appoinments";
 import { CreateAppointment } from "./pages/CreateAppointment";
 import { CreatePost } from "./pages/CreatePost";
 import { CreateReferral } from "./pages/CreateReferral";
+import { CreateReferralResult } from "./pages/CreateReferralResult";
 import Navbar from "./components/Navbar";
 import Posts from "./pages/Posts";
 import Referrals from "./pages/Referrals";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/create-appointment" element={<CreateAppointment/>} />
         <Route path="/referrals" element={<Referrals/>} />
         <Route path="/create-referral" element={<CreateReferral/>} />
+        <Route path="/test" element={<CreateReferralResult/>} />
         <Route path="*" element={<Navigate to="/posts" />} />
       </Routes>
     </>
