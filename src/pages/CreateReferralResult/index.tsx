@@ -40,28 +40,25 @@ export const CreateReferralResult = () => {
       })
     }
 
+  async function getAsByteArray(file: File) {
+    return new Uint8Array(await readFile(file))
+  }
 
-    const convertBase64 = (file: File) => {
-      return new Promise<string | ArrayBuffer | null>((resolve, reject) => {
-          const fileReader = new FileReader();
-          fileReader.readAsDataURL(file);
-  
-          fileReader.onload = () => {
-            resolve(fileReader.result);
-          };
-  
-          fileReader.onerror = (error) => {
-              reject(error);
-          };
-      });
-  };
+  function readFile(file: File) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.addEventListener("loadend", e => resolve(e.target?.result))
+      reader.addEventListener("error", reject)
+      reader.readAsArrayBuffer(file)
+    })
+  }
   
   const uploadFile = async (event: ChangeEvent<HTMLInputElement>) => {
       if (!event.target.files) return;
       for(let i = 0; i < event.target.files.length; i++){
         
         const file = event.target.files[i];
-        const base64 = await convertBase64(file);
+        const byteFile = await getAsByteArray(file)
         
         setFiles(prev => (
           [...prev,
@@ -69,7 +66,7 @@ export const CreateReferralResult = () => {
             fileName: file.name,
             mimeType: file.type,
             attachmentTypeID: 12,
-            fileContent: base64,
+            fileContent: byteFile,
           }]
         ))
       }

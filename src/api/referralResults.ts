@@ -38,9 +38,9 @@ export async function getAllReferralResults(): Promise<ReferralResult[]> {
   export async function updateReferralResult(referral_result: ReferralResult) {
     referral_result.execDate = referral_result.execDate+"+06:00"
     
-    //TODO: split string after comma
+    // TODO: split string after comma
     for(let i = 0; i < referral_result.fileResults.length; i++) {
-      console.log(typeof referral_result.fileResults[i].fileContent)
+      referral_result.fileResults[i].fileContent = new Uint8Array(referral_result.fileResults[i].fileContent);
     }
 
 
