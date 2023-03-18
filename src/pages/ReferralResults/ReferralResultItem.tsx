@@ -75,14 +75,14 @@ export const ReferralResultItem = ({refferralResult}: propValue) => {
             <div className={classes.fields}>
               <UpdateField name="id" value={referralResultForm.id} type="number"  handleChange={handleChange}/>
               <UpdateField name="execDate" value={referralResultForm.execDate} type="datetime-local" handleChange={handleChange}/>
-              <UpdateField name="execPostID" value={referralResultForm.execPostId} type="number" handleChange={handleChange}/>
+              <UpdateField name="execPostID" value={referralResultForm.execPostID} type="number" handleChange={handleChange}/>
               <UpdateField name="execTest" value={referralResultForm.execText} handleChange={handleChange}/>
               </div>
             <div className={classes.fields}>
               <UpdateField name="fileName" value={referralResultForm.fileResults[0].fileName} handleChange={handleChange}/>
               <UpdateField name="attachmentTypeID" value={referralResultForm.fileResults[0].attachmentTypeID} type="number" handleChange={handleChange}/>
               <UpdateField name="mimeType" value={referralResultForm.fileResults[0].mimeType} handleChange={handleChange}/>
-              {/* <UpdateField name="hPostName" value={referralResultForm.fileResults[0].fileContent} handleChange={handleChange}/> */}
+              <UpdateField name="hPostName" value={referralResultForm.fileResults[0].fileContent} handleChange={handleChange}/>
             </div>
         </div>
         </form>
@@ -99,13 +99,16 @@ export const ReferralResultItem = ({refferralResult}: propValue) => {
             <button onClick={handleDelete} className={classes.buttonIcon}><FontAwesomeIcon icon={faTrash} size="xl"/></button>
             </div>   
             <div className={classes.fields}>
-            <p>&quot;personSexName&quot; : <span className={classes.value}>&quot;{refferralResult.id}&quot;</span></p>
-            <p>&quot;personSexName&quot; : <span className={classes.value}>&quot;{refferralResult.execDate}&quot;</span></p>
-            <p>&quot;personSexName&quot; : <span className={classes.value}>&quot;{refferralResult.execPostId}&quot;</span></p>
-            <p>&quot;personSexName&quot; : <span className={classes.value}>&quot;{refferralResult.execText}&quot;</span></p>
+            <p>&quot;id&quot; : <span className={classes.value}>&quot;{refferralResult.id}&quot;</span></p>
+            <p>&quot;execDate&quot; : <span className={classes.value}>&quot;{refferralResult.execDate}&quot;</span></p>
+            <p>&quot;execPostID&quot; : <span className={classes.value}>&quot;{refferralResult.execPostID}&quot;</span></p>
+            <p>&quot;execText&quot; : <span className={classes.value}>&quot;{refferralResult.execText}&quot;</span></p>
             </div>
             <div className={classes.fields}>
-            <p>&quot;hPostName&quot; : <span className={classes.value}>&quot;{refferralResult.fileResults[0]}&quot;</span></p>
+              <p>&quot;fileResults&quot; :</p>
+              {refferralResult.fileResults.map(file => (
+                <p key={file.fileName}>&quot;fileName&quot; : <span className={classes.value}>&quot;{file.fileName}&quot;</span></p>
+              ))}
             </div>
         </div>
         </>

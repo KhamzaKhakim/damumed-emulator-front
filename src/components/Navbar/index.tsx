@@ -7,7 +7,7 @@ export default function Navbar() {
             <Link to="/posts" className={classes.link}>Posts</Link>
             <Link to="/appointments" className={classes.link}>Appointments</Link>
             <Link to="/referrals" className={classes.link}>Referrals</Link>
-            <Link to="/posts" className={classes.link}>Referral Results</Link>
+            <Link to="/referral-results" className={classes.link}>Referral Results</Link>
         </div>
     )
 }

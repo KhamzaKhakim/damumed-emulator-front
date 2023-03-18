@@ -4,7 +4,7 @@ import classes from "./styles.module.css";
 
 type propsValue = {
     name: string;
-    value: string | number | boolean;
+    value?: string | number | boolean;
     type?: string;
     readonly?: boolean;
     handleChange: ChangeEventHandler<HTMLInputElement>;

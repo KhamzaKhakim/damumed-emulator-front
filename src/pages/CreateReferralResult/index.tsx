@@ -40,12 +40,15 @@ export const CreateReferralResult = () => {
       })
     }
 
-  async function getAsByteArray(file: File) {
-    return new Uint8Array(await readFile(file))
-  }
+    const handleAttachmentIdChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) => {
+      const newArr = [...files];
+      newArr[index].attachmentTypeID = Number(e.target.value);
+    
+      setFiles(newArr);
+    }
 
   function readFile(file: File) {
-    return new Promise((resolve, reject) => {
+    return new Promise<ArrayBuffer>((resolve, reject) => {
       const reader = new FileReader()
       reader.addEventListener("loadend", e => resolve(e.target?.result))
       reader.addEventListener("error", reject)
@@ -53,20 +56,31 @@ export const CreateReferralResult = () => {
     })
   }
   
+  function arrayBufferToBase64( buffer: ArrayBuffer ) {
+    let binary = '';
+    const bytes = new Uint8Array( buffer );
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
+
+  }
+  
   const uploadFile = async (event: ChangeEvent<HTMLInputElement>) => {
       if (!event.target.files) return;
       for(let i = 0; i < event.target.files.length; i++){
         
         const file = event.target.files[i];
-        const byteFile = await getAsByteArray(file)
+        const base64String = arrayBufferToBase64(await readFile(file));
         
         setFiles(prev => (
           [...prev,
           {
             fileName: file.name,
             mimeType: file.type,
-            attachmentTypeID: 12,
-            fileContent: byteFile,
+            attachmentTypeID: 0,
+            fileContent: base64String,
           }]
         ))
       }
@@ -75,7 +89,7 @@ export const CreateReferralResult = () => {
   
   function handleFileChange(e: ChangeEvent<HTMLInputElement>){
       uploadFile(e);
-      }
+  }
 
     function navigateToPosts(){
         navigate("/referrals-results")
@@ -113,6 +127,11 @@ export const CreateReferralResult = () => {
             </div>
             <div className={classes.fields}>
               <UpdateField name="files" value={referralResultForm.execText} type="file" handleChange={handleFileChange}/>
+              <hr/>
+              <p>attacmentTypeID: </p>
+              {files.map((file, index) => (
+                <UpdateField key={file.fileName} name={file.fileName} value={files[index].attachmentTypeID} type="number" handleChange={handleAttachmentIdChange(index)}/> 
+              ))}
             </div>
         </div>
         </form>
@@ -121,4 +140,4 @@ export const CreateReferralResult = () => {
         </div>
         </>
       )
-  };
+  };  
