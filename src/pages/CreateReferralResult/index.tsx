@@ -135,8 +135,6 @@ export const CreateReferralResult = () => {
             </div>
         </div>
         </form>
-        <div>{files.length}</div>
-        <div>{referralResultForm.fileResults.length}</div>
         </div>
         </>
       )

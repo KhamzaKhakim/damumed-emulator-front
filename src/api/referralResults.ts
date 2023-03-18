@@ -2,7 +2,7 @@ export type FileResult = {
   fileName: string;
   attachmentTypeID: number;
   mimeType: string;
-  fileContent: any;
+  fileContent: string;
 
 }
 
