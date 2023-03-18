@@ -91,8 +91,8 @@ export const CreateReferralResult = () => {
       uploadFile(e);
   }
 
-    function navigateToPosts(){
-        navigate("/referrals-results")
+    function navigateToReferralResults(){
+        navigate("/referral-results")
     }
     
     
@@ -117,7 +117,7 @@ export const CreateReferralResult = () => {
           <div className={classes.container}> 
             <div className={classes.buttonContainer}>
             <button type="submit" className={classes.buttonIcon} disabled={referralResultForm.id === 0}><FontAwesomeIcon icon={faFloppyDisk} size="xl"/></button>
-            <button onClick={navigateToPosts} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
+            <button onClick={navigateToReferralResults} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
             </div>   
             <div className={classes.fields}>
               <UpdateField name="id" value={referralResultForm.id} type="number"  handleChange={handleChange}/>
