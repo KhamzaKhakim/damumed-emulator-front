@@ -51,7 +51,7 @@ export const CreateExternalApp = () => {
           <div className={classes.container}> 
             <div className={classes.buttonContainer}>
             <button type="submit" className={classes.buttonIcon}
-            disabled={externalAppForm.systemUsername === "" && externalAppForm.systemPassword === ""}>
+            disabled={externalAppForm.systemUsername === "" || externalAppForm.systemPassword === ""}>
               <FontAwesomeIcon icon={faFloppyDisk} size="xl"/></button>
             <button onClick={navigateToExternalApps} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
             </div>   
