@@ -1,0 +1,71 @@
+.colFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    font-weight: bolder;
+    color: rgb(74, 74, 74);
+    width: 920px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* border: 1px rgb(210, 210, 210) solid; */
+    border: 1px black solid;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.fields {
+    margin-top: 35px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+.fields p {
+    margin:5px;
+}
+
+
+
+.value {
+    font-weight:lighter;
+    color: rgb(108, 99, 100);
+}
+
+.buttonContainer {
+    position: absolute;
+    right: 5px;
+    margin-left: auto;
+    padding: 5px;
+    display: inline-block;
+}
+
+.buttonIcon {
+    width: 40px;
+}
+
+.createLink {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(80, 210, 80);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.inputFields {
+    position: relative;
+    height: 23.4px;
+    width: fit-content;
+}
+
+.inputFields input {
+    position: absolute;
+}
+    
+.inputFields label {
+    display: inline-block;
+    margin: 5px;
+}

@@ -96,16 +96,15 @@ export const ReferralResultItem = ({refferralResult}: propValue) => {
               </div>
             <div className={classes.fields}>
               {referralResultForm.fileResults.map((file, index) => (
-                <>
+                <div key={file.fileName}>
                 <UpdateField name="fileName" value={file.fileName} handleChange={handleFileChange(index)}/>
                 <UpdateField name="attachmentTypeID" value={file.attachmentTypeID} type="number" handleChange={handleFileChange(index)}/>
                 <hr/>
-              </>
+              </div>
               ))}
             </div>
         </div>
         </form>
-        <div>{JSON.stringify(referralResultForm)}</div>
         </>
       )
     }

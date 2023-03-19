@@ -36,7 +36,9 @@ export async function getAllReferralResults(): Promise<ReferralResult[]> {
 
 
   export async function updateReferralResult(referral_result: ReferralResult) {
-    referral_result.execDate = referral_result.execDate+"+06:00"
+    if(referral_result.execDate){
+      referral_result.execDate = referral_result.execDate+"+06:00"
+    }
 
     const response = await fetch(`http://localhost:8080/db/referral_result`, {
       method: "PUT",
