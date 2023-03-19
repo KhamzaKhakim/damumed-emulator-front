@@ -102,7 +102,7 @@ export const CreateReferralResult = () => {
         mutationFn: updateReferralResult,
         onSuccess: () => {
           queryClient.invalidateQueries(["referralsResults"], { exact: true })
-          navigate("/referrals")
+          navigate("/referral-results")
         },
       })
 

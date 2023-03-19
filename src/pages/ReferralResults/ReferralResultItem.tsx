@@ -29,6 +29,22 @@ export const ReferralResultItem = ({refferralResult}: propValue) => {
         }
       })
     }
+
+    const handleFileChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) => {
+      const newArr = [...referralResultForm.fileResults];
+      let file = newArr[index]
+      file = {
+        ...file,
+        [e.target.name]: e.target.value
+      }
+      newArr[index] = file
+
+      setRefferralResultForm({
+        ...referralResultForm,
+        fileResults: newArr
+      })
+      
+    }
     
     
     const queryClient = useQueryClient()
@@ -76,13 +92,16 @@ export const ReferralResultItem = ({refferralResult}: propValue) => {
               <UpdateField name="id" value={referralResultForm.id} type="number"  handleChange={handleChange}/>
               <UpdateField name="execDate" value={referralResultForm.execDate} type="datetime-local" handleChange={handleChange}/>
               <UpdateField name="execPostID" value={referralResultForm.execPostID} type="number" handleChange={handleChange}/>
-              <UpdateField name="execTest" value={referralResultForm.execText} handleChange={handleChange}/>
+              <UpdateField name="execText" value={referralResultForm.execText} handleChange={handleChange}/>
               </div>
             <div className={classes.fields}>
-              <UpdateField name="fileName" value={referralResultForm.fileResults[0].fileName} handleChange={handleChange}/>
-              <UpdateField name="attachmentTypeID" value={referralResultForm.fileResults[0].attachmentTypeID} type="number" handleChange={handleChange}/>
-              <UpdateField name="mimeType" value={referralResultForm.fileResults[0].mimeType} handleChange={handleChange}/>
-              <UpdateField name="hPostName" value={referralResultForm.fileResults[0].fileContent} handleChange={handleChange}/>
+              {referralResultForm.fileResults.map((file, index) => (
+                <>
+                <UpdateField name="fileName" value={file.fileName} handleChange={handleFileChange(index)}/>
+                <UpdateField name="attachmentTypeID" value={file.attachmentTypeID} type="number" handleChange={handleFileChange(index)}/>
+                <hr/>
+              </>
+              ))}
             </div>
         </div>
         </form>
@@ -108,7 +127,7 @@ export const ReferralResultItem = ({refferralResult}: propValue) => {
               <p>&quot;fileResults&quot; :</p>
               {refferralResult.fileResults.map(file => (
                 <p key={file.fileName}>&quot;fileName&quot; : <span className={classes.value}>&quot;{file.fileName}&quot;</span></p>
-              ))}
+                ))}
             </div>
         </div>
         </>

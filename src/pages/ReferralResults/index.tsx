@@ -36,7 +36,7 @@ export default function ReferralResults() {
     return (
       <>
       <div className={classes.colFlex}>
-        <Link to="/create-referral-result" className={classes.createLink}>ADD NEW REFERRAL RSEULT<FontAwesomeIcon icon={faFileImport} size="xl"/></Link>
+        <Link to="/create-referral-result" className={classes.createLink}>ADD NEW REFERRAL RESULT<FontAwesomeIcon icon={faFileImport} size="xl"/></Link>
       </div>
       <div className={classes.colFlex}>
           {currentReferralResults?.map(item  => (
