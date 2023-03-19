@@ -89,7 +89,7 @@ export const ReferralResultItem = ({refferralResult}: propValue) => {
             <button onClick={handleUpdatePage} className={classes.buttonIcon}><FontAwesomeIcon icon={faXmark} size="xl"/></button>
             </div>   
             <div className={classes.fields}>
-              <UpdateField name="id" value={referralResultForm.id} type="number"  handleChange={handleChange}/>
+              <UpdateField name="id" value={referralResultForm.id} type="number" readonly handleChange={handleChange}/>
               <UpdateField name="execDate" value={referralResultForm.execDate} type="datetime-local" handleChange={handleChange}/>
               <UpdateField name="execPostID" value={referralResultForm.execPostID} type="number" handleChange={handleChange}/>
               <UpdateField name="execText" value={referralResultForm.execText} handleChange={handleChange}/>
