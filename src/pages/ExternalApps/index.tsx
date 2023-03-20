@@ -14,7 +14,7 @@ import { useState } from "react";
 export default function ExternalApps() {
 
   const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 2;  
+    const postsPerPage = 5;  
 
     const lastExternalAppIndex = currentPage * postsPerPage;
     const firstExternalAppIndex = lastExternalAppIndex - postsPerPage;
