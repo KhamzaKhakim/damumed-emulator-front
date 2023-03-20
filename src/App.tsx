@@ -30,7 +30,7 @@ function App() {
         <Route path="/create-external-app" element={<CreateExternalApp/>} />
         <Route path="/external-app-sessions" element={<ExternalAppSessions/>} />
         <Route path="/create-external-app-session" element={<CreateExternalAppSession/>} />
-        <Route path="*" element={<Navigate to="/posts" />} />
+        <Route path="*" element={<Navigate to="/external-apps" />} />
       </Routes>
     </>
   )

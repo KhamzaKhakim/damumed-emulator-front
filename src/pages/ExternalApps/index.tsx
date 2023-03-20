@@ -26,7 +26,7 @@ export default function ExternalApps() {
   
     if (externalAppQuery.status === "loading") return <h1>Loading...</h1>
     if (externalAppQuery.status === "error") {
-      return <h1>{JSON.stringify(externalAppQuery.error)}</h1>
+      return <h1>Can not reach to backend</h1>
     }
 
     const currentExternalApps = externalAppQuery.data?.slice(firstExternalAppIndex, lastExternalAppIndex);

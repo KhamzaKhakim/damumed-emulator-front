@@ -26,7 +26,7 @@ export default function ExternalAppSessions() {
   
     if (externalAppQuery.status === "loading") return <h1>Loading...</h1>
     if (externalAppQuery.status === "error") {
-      return <h1>{JSON.stringify(externalAppQuery.error)}</h1>
+      return <h1>Can not reach to backend</h1>
     }
 
     const currentExternalApps = externalAppQuery.data?.slice(firstExternalAppIndex, lastExternalAppIndex);
@@ -38,7 +38,7 @@ export default function ExternalAppSessions() {
       </div>
       <div className={classes.colFlex}>
           {currentExternalApps?.map(item  => (
-            <ExternalAppSessionItem key={item.externalAppSystemUsername} externalAppSession={item}/>
+            <ExternalAppSessionItem key={item.token} externalAppSession={item}/>
           ))}
           {externalAppQuery.data?.length === 0 && <EmptyData />}
       </div>

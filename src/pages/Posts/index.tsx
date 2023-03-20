@@ -27,7 +27,7 @@ export default function Posts() {
   
     if (postsQuery.status === "loading") return <h1>Loading...</h1>
     if (postsQuery.status === "error") {
-      return <h1>{JSON.stringify(postsQuery.error)}</h1>
+      return <h1>Can not reach to backend</h1>
     }
 
     const currentPosts = postsQuery.data?.slice(firstPostIndex, lastPostIndex);

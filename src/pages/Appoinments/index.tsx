@@ -26,7 +26,7 @@ export default function Appointments() {
   
     if (appointmentsQuery.status === "loading") return <h1>Loading...</h1>
     if (appointmentsQuery.status === "error") {
-      return <h1>{JSON.stringify(appointmentsQuery.error)}</h1>
+      return <h1>Can not reach to backend</h1>
     }
 
     const currentAppointments = appointmentsQuery.data?.slice(firstAppointmentIndex, lastAppointmentIndex);

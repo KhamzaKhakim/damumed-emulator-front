@@ -27,7 +27,7 @@ export default function Referrals() {
   
     if (referralQuery.status === "loading") return <h1>Loading...</h1>
     if (referralQuery.status === "error") {
-      return <h1>{JSON.stringify(referralQuery.error)}</h1>
+      return <h1>Can not reach to backend</h1>
     }
 
     const currentPosts = referralQuery.data?.slice(firstReferralIndex, lastReferralIndex);
