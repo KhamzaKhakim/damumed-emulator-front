@@ -2,9 +2,11 @@ import { Navigate, Route, Routes } from "react-router-dom" ;
 import Appointments from "./pages/Appoinments";
 import { CreateAppointment } from "./pages/CreateAppointment";
 import { CreateExternalApp } from "./pages/CreateExternalApp";
+import { CreateExternalAppSession } from "./pages/CreateExternalAppSession";
 import { CreatePost } from "./pages/CreatePost";
 import { CreateReferral } from "./pages/CreateReferral";
 import { CreateReferralResult } from "./pages/CreateReferralResult";
+import ExternalAppSessions from "./pages/ExternalAppSessions";
 import ExternalApps from "./pages/ExternalApps";
 import Navbar from "./components/Navbar";
 import Posts from "./pages/Posts";
@@ -26,6 +28,8 @@ function App() {
         <Route path="/create-referral-result" element={<CreateReferralResult/>} />
         <Route path="/external-apps" element={<ExternalApps/>} />
         <Route path="/create-external-app" element={<CreateExternalApp/>} />
+        <Route path="/external-app-sessions" element={<ExternalAppSessions/>} />
+        <Route path="/create-external-app-session" element={<CreateExternalAppSession/>} />
         <Route path="*" element={<Navigate to="/posts" />} />
       </Routes>
     </>
