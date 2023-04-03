@@ -26,7 +26,6 @@ export type Appointment = {
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export async function getAllAppointments(): Promise<Appointment[]> {
-    console.log(backendUrl)
     const response = await fetch(`${backendUrl}/db/appointment`);
   
     if (!response.ok) {
