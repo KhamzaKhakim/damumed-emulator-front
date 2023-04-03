@@ -23,8 +23,11 @@ export type Appointment = {
     note: string;
 }
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export async function getAllAppointments(): Promise<Appointment[]> {
-    const response = await fetch("http://localhost:8080/db/appointment");
+    console.log(backendUrl)
+    const response = await fetch(`${backendUrl}/db/appointment`);
   
     if (!response.ok) {
       throw new Error("Something went wrong.");
@@ -34,7 +37,7 @@ export async function getAllAppointments(): Promise<Appointment[]> {
   }
 
   export async function deleteAppointment(id: number) {
-    const response = await fetch(`http://localhost:8080/db/appointment/${id}`, {
+    const response = await fetch(`${backendUrl}/db/appointment/${id}`, {
       method: "DELETE",
     });
   
@@ -45,7 +48,7 @@ export async function getAllAppointments(): Promise<Appointment[]> {
 
 
   export async function updateAppointment(appointment: Appointment) {
-    const response = await fetch(`http://localhost:8080/db/appointment`, {
+    const response = await fetch(`${backendUrl}/db/appointment`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

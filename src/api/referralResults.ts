@@ -14,8 +14,10 @@ export type ReferralResult = {
     fileResults: Array<FileResult>
 }
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export async function getAllReferralResults(): Promise<ReferralResult[]> {
-    const response = await fetch("http://localhost:8080/db/referral_result");
+    const response = await fetch(`${backendUrl}/db/referral_result`);
   
     if (!response.ok) {
       throw new Error("Something went wrong.");
@@ -25,7 +27,7 @@ export async function getAllReferralResults(): Promise<ReferralResult[]> {
   }
 
   export async function deleteReferralResult(id: number) {
-    const response = await fetch(`http://localhost:8080/db/referral_result/${id}`, {
+    const response = await fetch(`${backendUrl}/db/referral_result/${id}`, {
       method: "DELETE",
     });
   
@@ -40,7 +42,7 @@ export async function getAllReferralResults(): Promise<ReferralResult[]> {
       referral_result.execDate = referral_result.execDate+"+06:00"
     }
 
-    const response = await fetch(`http://localhost:8080/db/referral_result`, {
+    const response = await fetch(`${backendUrl}/db/referral_result`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -20,8 +20,10 @@ export type Post = {
     hPostName: string;
 }
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export async function getAllPosts(): Promise<Post[]> {
-    const response = await fetch("http://localhost:8080/db/post");
+    const response = await fetch(`${backendUrl}/db/post`);
   
     if (!response.ok) {
       throw new Error("Something went wrong.");
@@ -31,7 +33,7 @@ export async function getAllPosts(): Promise<Post[]> {
   }
 
   export async function deletePost(iin: string) {
-    const response = await fetch(`http://localhost:8080/db/post/${iin}`, {
+    const response = await fetch(`${backendUrl}/db/post/${iin}`, {
       method: "DELETE",
     });
   
@@ -42,7 +44,7 @@ export async function getAllPosts(): Promise<Post[]> {
 
 
   export async function updatePost(post: Post) {
-    const response = await fetch(`http://localhost:8080/db/post`, {
+    const response = await fetch(`${backendUrl}/db/post`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

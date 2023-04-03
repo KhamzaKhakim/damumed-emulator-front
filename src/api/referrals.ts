@@ -28,11 +28,12 @@ export type Referral = {
     execMoID: number;
     execMoName: string;
     serviceCount: number;
-
 }
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export async function getAllReferrals(): Promise<Referral[]> {
-    const response = await fetch("http://localhost:8080/db/referral");
+    const response = await fetch(`${backendUrl}/db/referral`);
   
     if (!response.ok) {
       throw new Error("Something went wrong.");
@@ -42,7 +43,7 @@ export async function getAllReferrals(): Promise<Referral[]> {
   }
 
   export async function deleteReferral(id: number) {
-    const response = await fetch(`http://localhost:8080/db/referral/${id}`, {
+    const response = await fetch(`${backendUrl}/db/referral/${id}`, {
       method: "DELETE",
     });
   
@@ -53,7 +54,7 @@ export async function getAllReferrals(): Promise<Referral[]> {
 
 
   export async function updateReferral(referral: Referral) {
-    const response = await fetch(`http://localhost:8080/db/referral`, {
+    const response = await fetch(`${backendUrl}/db/referral`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
