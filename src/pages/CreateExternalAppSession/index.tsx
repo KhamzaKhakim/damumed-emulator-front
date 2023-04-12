@@ -35,7 +35,7 @@ export const CreateExternalAppSession = () => {
     const createPostMutation = useMutation({
         mutationFn: createSession,
         onSuccess: () => {
-          queryClient.invalidateQueries(["external_app_sessions"], { exact: true })
+          queryClient.invalidateQueries(["external_app_sessions"], { exact: true }).catch(err => console.error(err))
           navigate("/external-app-sessions")
         },
       })

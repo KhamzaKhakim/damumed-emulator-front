@@ -12,16 +12,20 @@ type propsValue = {
 
   
 export default function UpdateField({name, value, type = "text", readonly = false,  handleChange}: propsValue) {
-    if(type === "boolean") {
+    if(type === "boolean")  {
         return (
             <div className={classes.inputFields}>
               <label>&quot;{name}&quot; : </label>
-              <input type="radio" name={name} value="true" id="true" checked={value == true || value === "true"} onChange={handleChange}/>
+              <input type="radio" name={name} value="true" id="true" checked={value === true || value === "true"} onChange={handleChange}/>
               <label htmlFor="true" className={classes.booleanLabel}>True</label>
               <input type="radio" name={name} value="false" id="false" checked={value === false || value === "false"} onChange={handleChange}/>
               <label htmlFor="false" className={classes.booleanLabel}>False</label>
         </div>
         )
+    }
+    
+    if(typeof value === "boolean") {
+        value = value.toString()
     }
 
     return (

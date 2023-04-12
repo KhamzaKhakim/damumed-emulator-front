@@ -37,7 +37,7 @@ export const ReferralItem = ({referral}: propValue) => {
     const deletereferralMutation = useMutation({
       mutationFn: deleteReferral,
       onSuccess: () => {
-        queryClient.invalidateQueries(["referrals"], { exact: true })
+        queryClient.invalidateQueries(["referrals"], { exact: true }).catch(err => console.error(err))
       },
     })
   
@@ -48,7 +48,7 @@ export const ReferralItem = ({referral}: propValue) => {
     const updatereferralMutation = useMutation({
         mutationFn: updateReferral,
         onSuccess: () => {
-          queryClient.invalidateQueries(["referrals"], { exact: true })
+          queryClient.invalidateQueries(["referrals"], { exact: true }).catch(err => console.error(err))
           setUpdatePage(false)
         },
       })

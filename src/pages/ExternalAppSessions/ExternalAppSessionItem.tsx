@@ -15,7 +15,7 @@ export const ExternalAppSessionItem = ({externalAppSession}: propValue) => {
     const deleteExternalAppMutation = useMutation({
       mutationFn: deleteExternalAppSession,
       onSuccess: () => {
-        queryClient.invalidateQueries(["external_app_sessions"], { exact: true })
+        queryClient.invalidateQueries(["external_app_sessions"], { exact: true }).catch(err => console.error(err))
       },
     })
   

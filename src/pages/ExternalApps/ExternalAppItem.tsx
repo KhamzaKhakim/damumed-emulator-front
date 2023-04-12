@@ -31,7 +31,7 @@ export const ExternalAppItem = ({externalApp}: propValue) => {
     const deleteExternalAppMutation = useMutation({
       mutationFn: deleteExternalApp,
       onSuccess: () => {
-        queryClient.invalidateQueries(["external_apps"], { exact: true })
+        queryClient.invalidateQueries(["external_apps"], { exact: true }).catch(err => console.error(err))
       },
     })
   
@@ -42,7 +42,7 @@ export const ExternalAppItem = ({externalApp}: propValue) => {
     const updateExternalAppMutation = useMutation({
         mutationFn: updateExternalApp,
         onSuccess: () => {
-          queryClient.invalidateQueries(["external_apps"], { exact: true })
+          queryClient.invalidateQueries(["external_apps"], { exact: true }).catch(err => console.error(err))
           setUpdatePage(false)
         },
       })

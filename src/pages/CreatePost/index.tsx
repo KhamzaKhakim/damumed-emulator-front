@@ -54,7 +54,7 @@ export const CreatePost = () => {
     const createPostMutation = useMutation({
         mutationFn: updatePost,
         onSuccess: () => {
-          queryClient.invalidateQueries(["posts"], { exact: true })
+          queryClient.invalidateQueries(["posts"], { exact: true }).catch(err => console.error(err))
           navigate("/posts")
         },
       })

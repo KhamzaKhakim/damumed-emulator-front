@@ -63,7 +63,7 @@ export const CreateReferral = () => {
     const createPostMutation = useMutation({
         mutationFn: updateReferral,
         onSuccess: () => {
-          queryClient.invalidateQueries(["referrals"], { exact: true })
+          queryClient.invalidateQueries(["referrals"], { exact: true }).catch(err => console.error(err))
           navigate("/referrals")
         },
       })

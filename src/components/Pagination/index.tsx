@@ -22,7 +22,7 @@ export default function Pagination({totalPosts = 0, postsPerPage, setCurrentPage
                     <button
                         key={index}
                         onClick={() => setCurrentPage(page)}
-                        className={page == currentPage ? classes.active: ''}>
+                        className={page === currentPage ? classes.active: ''}>
                         {page}
                     </button>
                 );

@@ -56,7 +56,7 @@ export const CreateAppointment = () => {
     const createPostMutation = useMutation({
         mutationFn: updateAppointment,
         onSuccess: () => {
-          queryClient.invalidateQueries(["appointments"], { exact: true })
+          queryClient.invalidateQueries(["appointments"], { exact: true }).catch(err => console.error(err))
           navigate("/appointments")
         },
       })

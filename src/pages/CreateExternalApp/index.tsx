@@ -35,7 +35,7 @@ export const CreateExternalApp = () => {
     const createPostMutation = useMutation({
         mutationFn: updateExternalApp,
         onSuccess: () => {
-          queryClient.invalidateQueries(["external_apps"], { exact: true })
+          queryClient.invalidateQueries(["external_apps"], { exact: true }).catch(err => console.error(err))
           navigate("/external-apps")
         },
       })

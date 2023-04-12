@@ -50,7 +50,20 @@ export const CreateReferralResult = () => {
   function readFile(file: File) {
     return new Promise<ArrayBuffer>((resolve, reject) => {
       const reader = new FileReader()
-      reader.addEventListener("loadend", e => resolve(e.target?.result))
+      reader.addEventListener("loadend", () => {
+        const result = reader.result;
+
+        if(result === null) {
+          reject(new Error("Unexpected result: null"));
+          return;
+        }
+
+        if(!(result instanceof ArrayBuffer)) {
+          reject(new Error("Unexpected result type"));
+          return;
+        }
+        resolve(result)
+      })
       reader.addEventListener("error", reject)
       reader.readAsArrayBuffer(file)
     })
@@ -88,7 +101,7 @@ export const CreateReferralResult = () => {
   
   
   function handleFileChange(e: ChangeEvent<HTMLInputElement>){
-      uploadFile(e);
+      uploadFile(e).catch(err => console.error(err));
   }
 
     function navigateToReferralResults(){
@@ -101,7 +114,7 @@ export const CreateReferralResult = () => {
     const createReferralResultMutation = useMutation({
         mutationFn: updateReferralResult,
         onSuccess: () => {
-          queryClient.invalidateQueries(["referralsResults"], { exact: true })
+          queryClient.invalidateQueries(["referralsResults"], { exact: true }).catch(err => alert(err))
           navigate("/referral-results")
         },
       })

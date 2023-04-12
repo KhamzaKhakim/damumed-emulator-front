@@ -35,7 +35,7 @@ export const AppointmentItem = ({appointment}: propValue) => {
     const deleteAppointmentMutation = useMutation({
       mutationFn: deleteAppointment,
       onSuccess: () => {
-        queryClient.invalidateQueries(["appointments"], { exact: true })
+        queryClient.invalidateQueries(["appointments"], { exact: true }).catch(err => console.error(err))
       },
     })
   
@@ -46,7 +46,7 @@ export const AppointmentItem = ({appointment}: propValue) => {
     const updateAppointmentMutation = useMutation({
         mutationFn: updateAppointment,
         onSuccess: () => {
-          queryClient.invalidateQueries(["appointments"], { exact: true })
+          queryClient.invalidateQueries(["appointments"], { exact: true }).catch(err => console.error(err))
           setUpdatePage(false)
         },
       })

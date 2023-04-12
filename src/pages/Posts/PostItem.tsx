@@ -36,7 +36,7 @@ export const PostItem = ({post}: propValue) => {
     const deletePostMutation = useMutation({
       mutationFn: deletePost,
       onSuccess: () => {
-        queryClient.invalidateQueries(["posts"], { exact: true })
+        queryClient.invalidateQueries(["posts"], { exact: true }).catch(err => console.error(err))
       },
     })
   
@@ -47,7 +47,7 @@ export const PostItem = ({post}: propValue) => {
     const updatePostMutation = useMutation({
         mutationFn: updatePost,
         onSuccess: () => {
-          queryClient.invalidateQueries(["posts"], { exact: true })
+          queryClient.invalidateQueries(["posts"], { exact: true }).catch(err => console.error(err))
           setUpdatePage(false)
         },
       })

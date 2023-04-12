@@ -32,7 +32,9 @@ export async function getAllAppointments(): Promise<Appointment[]> {
       throw new Error("Something went wrong.");
     }
     
-    return response.json();
+    const appointments: Appointment[] = response.json() as Appointment[];
+
+    return appointments;
   }
 
   export async function deleteAppointment(id: number) {
