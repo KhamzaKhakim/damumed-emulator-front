@@ -18,7 +18,7 @@ export async function getAllExternalApps(): Promise<ExternalApp[]> {
       throw new Error("Something went wrong.");
     }
     
-    return response.json();
+    return response.json() as Promise<ExternalApp[]>;
   }
 
   export async function deleteExternalApp(username: string) {
@@ -68,7 +68,7 @@ export async function getAllExternalApps(): Promise<ExternalApp[]> {
       throw new Error("Something went wrong.");
     }
     
-    return response.json();
+    return response.json() as Promise<ExternalAppSession[]>;
   }
 
   export async function deleteExternalAppSession(token: string) {

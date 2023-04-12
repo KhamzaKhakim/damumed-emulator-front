@@ -29,7 +29,7 @@ export async function getAllPosts(): Promise<Post[]> {
       throw new Error("Something went wrong.");
     }
     
-    return response.json();
+    return response.json() as Promise<Post[]>;
   }
 
   export async function deletePost(iin: string) {

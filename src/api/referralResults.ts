@@ -23,7 +23,7 @@ export async function getAllReferralResults(): Promise<ReferralResult[]> {
       throw new Error("Something went wrong.");
     }
     
-    return response.json();
+    return response.json() as Promise<ReferralResult[]>;
   }
 
   export async function deleteReferralResult(id: number) {
