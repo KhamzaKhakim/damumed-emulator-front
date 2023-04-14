@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom" ;
+import { Navigate, Route, Routes } from "react-router-dom";
 import Appointments from "./pages/Appoinments";
 import { CreateAppointment } from "./pages/CreateAppointment";
 import { CreateExternalApp } from "./pages/CreateExternalApp";
@@ -18,21 +18,30 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/posts" element={<Posts/>} />
-        <Route path="/create-post" element={<CreatePost/>} />
-        <Route path="/appointments" element={<Appointments/>} />
-        <Route path="/create-appointment" element={<CreateAppointment/>} />
-        <Route path="/referrals" element={<Referrals/>} />
-        <Route path="/create-referral" element={<CreateReferral/>} />
-        <Route path="/referral-results" element={<ReferralResults/>} />
-        <Route path="/create-referral-result" element={<CreateReferralResult/>} />
-        <Route path="/external-apps" element={<ExternalApps/>} />
-        <Route path="/create-external-app" element={<CreateExternalApp/>} />
-        <Route path="/external-app-sessions" element={<ExternalAppSessions/>} />
-        <Route path="/create-external-app-session" element={<CreateExternalAppSession/>} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/appointments" element={<Appointments />} />
+        <Route path="/create-appointment" element={<CreateAppointment />} />
+        <Route path="/referrals" element={<Referrals />} />
+        <Route path="/create-referral" element={<CreateReferral />} />
+        <Route path="/referral-results" element={<ReferralResults />} />
+        <Route
+          path="/create-referral-result"
+          element={<CreateReferralResult />}
+        />
+        <Route path="/external-apps" element={<ExternalApps />} />
+        <Route path="/create-external-app" element={<CreateExternalApp />} />
+        <Route
+          path="/external-app-sessions"
+          element={<ExternalAppSessions />}
+        />
+        <Route
+          path="/create-external-app-session"
+          element={<CreateExternalAppSession />}
+        />
         <Route path="*" element={<Navigate to="/external-apps" />} />
       </Routes>
     </>
-  )
+  );
 }
 export default App;
